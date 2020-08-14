@@ -10,7 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "clientside-require": "^4.7.2",
     "express": "^4.17.1",
-    "png-itxt": "^2.0.0"
+    "png-itxt": "^2.0.0",
+    "pug": "^3.0.0",
+    "util": "^0.12.3"
   }
 }

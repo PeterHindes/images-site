@@ -1,21 +1,22 @@
 const express = require('express');
 const app = express();
 const fs = require('fs');
-const util = require('util');
+//const util = require('util');
 const pngitxt = require('png-itxt')
 
-fs.createReadStream('input.png')
-  .pipe(pngitxt.get("Description",function (err, data) {
-    if (!err && data) {
-      console.log(data.value);
-    }
-  }))
+fs.createReadStream('data/input.png')
+    .pipe(pngitxt.get("Description",function (err, data) {
+        if (!err && data) {
+            console.log(data.value);
+        }
+    }))
 
 const preloadCount = 3;
 
 app.get('/', function (req, res) {
-    // set response content   
-    fs.readFile('index2.html', 'utf8', function(err, data) {
+    console.log("Get");
+    fs.readFile('index.html', 'utf8', function(err, data) {
+        /*
         fs.readdir( 'data/pages', (error, files) => { 
             if (err) console.log(err);
             //console.log("Data:\n"+data);
@@ -43,12 +44,18 @@ app.get('/', function (req, res) {
             })
 
         })
+        */
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(data);
+        }
     });
-    //res.send('Hello World!')
 });
 
-app.use(express.static('data')); //Serves resources from public folder
+//app.use('/node_modules',express.static(__dirname + '/node_modules'));
+app.use(express.static('data'));
 
 
 //var server = 
-app.listen(5000);
+app.listen(5100);
